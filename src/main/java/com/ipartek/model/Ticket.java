@@ -12,76 +12,70 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tickets")
+@Table(name = "tickets")
 public class Ticket {
-	
-	
 
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name="id")
-		private int id;
-	    
-	    @Column(name="fecha")
-		private String fecha;
-	    
-	    @Column(name="hora")
-		private String hora;
-	    
-	    @OneToMany(mappedBy = "ticket")
-	    private List<TicketProducto> listaproductos;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
 
-	    
-	    public Ticket() {
-	    	this.listaproductos = new ArrayList<>();
-	    }
-		public Ticket(int id, String fecha, String hora, List<TicketProducto> listaproductos) {
-			super();
-			this.id = id;
-			this.fecha = fecha;
-			this.hora = hora;
-			this.listaproductos = listaproductos;
-		}
+	@Column(name = "fecha")
+	private String fecha;
 
-		
+	@Column(name = "hora")
+	private String hora;
 
-		public int getId() {
-			return id;
-		}
+	@OneToMany(mappedBy = "ticket")
+	private List<TicketProducto> listaproductos;
 
-		public void setId(int id) {
-			this.id = id;
-		}
+	public Ticket() {
+		this.listaproductos = new ArrayList<>();
+	}
 
-		public String getFecha() {
-			return fecha;
-		}
+	public Ticket(int id, String fecha, String hora, List<TicketProducto> listaproductos) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.listaproductos = listaproductos;
+	}
 
-		public void setFecha(String fecha) {
-			this.fecha = fecha;
-		}
+	public int getId() {
+		return id;
+	}
 
-		public String getHora() {
-			return hora;
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public void setHora(String hora) {
-			this.hora = hora;
-		}
+	public String getFecha() {
+		return fecha;
+	}
 
-		public List<TicketProducto> getListaproductos() {
-			return listaproductos;
-		}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 
-		public void setListaproductos(List<TicketProducto> listaproductos) {
-			this.listaproductos = listaproductos;
-		}
+	public String getHora() {
+		return hora;
+	}
 
-		@Override
-		public String toString() {
-			return "Ticket [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", listaproductos=" + listaproductos + "]";
-		}
-	    
-	    
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+	public List<TicketProducto> getListaproductos() {
+		return listaproductos;
+	}
+
+	public void setListaproductos(List<TicketProducto> listaproductos) {
+		this.listaproductos = listaproductos;
+	}
+
+	@Override
+	public String toString() {
+		return "Ticket [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", listaproductos=" + listaproductos + "]";
+	}
 
 }

@@ -23,7 +23,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class MainController {
 
-	
 	@Autowired
 	private ProductoRepository productoRepo;
 
@@ -78,13 +77,12 @@ public class MainController {
 				// Calcula el precio total del ticket
 				preciototal = preciototal + p.getPrecio() * cantidad;
 			}
-			
+
 			// Cargar precio total en la vista
 			model.addAttribute("preciototal", preciototal);
-			
+
 			// cargamos la lista map en la vista
 			model.addAttribute("atr_datos_en_sesion", listaReal);
-		
 
 		}
 

@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<link rel="stylesheet" th:href="@{/styles/estilos.css}">    
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
 	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
+
 <body>
-	
-	
-		 <header>
-        <h1>MODIFICAR PRODUCTO</h1>
-        <p>Modifica todos los cambios que sean necesarios.</p>
-    </header>
+
+
+	<header>
+		<h1>MODIFICAR PRODUCTO</h1>
+		<p>Modifica todos los cambios que sean necesarios.</p>
+	</header>
 	</div>
 
-		<div class="formulario">
-	 <form action="/modificarDatos">
-		 
-    
-    <label for="nombre">Id:</label>
-    <input type="text"  th:value="${atr_producto.id}" id="id" name="id" required readonly>
-    
-    <label for="nombre">Nombre:</label>
-    <input type="text"  th:value="${atr_producto.nombre}" id="nombre" name="nombre" required>
-    
-    <input type="hidden"  th:value="${atr_producto.foto}" id="foto" name="foto" required>
-    <input type="hidden"  th:value="${atr_producto.iva}" id="iva" name="iva" required>
-    
-    <label for="precio">Precio:</label>
-    <input type="text" th:value="${atr_producto.precio}" id="precio" name="precio" required>
-    
+	<div class="formulario">
+		<form action="/modificarDatos">
+
+
+			<label for="nombre">Id:</label>
+			<input type="text" th:value="${atr_producto.id}" id="id" name="id" required readonly>
+
+			<label for="nombre">Nombre:</label>
+			<input type="text" th:value="${atr_producto.nombre}" id="nombre" name="nombre" required>
+
+			<input type="hidden" th:value="${atr_producto.foto}" id="foto" name="foto" required>
+			<input type="hidden" th:value="${atr_producto.iva}" id="iva" name="iva" required>
+
+			<label for="precio">Precio:</label>
+			<input type="text" th:value="${atr_producto.precio}" id="precio" name="precio" required>
 
 
 
-    <button class="boton" type="submit">Modificar</button>
-  </form>
-	</div>	
 
-	
-	  	<div th:include="Base.html::pie"></div>
+			<button class="boton" type="submit">Modificar</button>
+		</form>
+	</div>
 
-    
+
+	<div th:include="Base.html::pie"></div>
+
+
 </body>
+
 </html>

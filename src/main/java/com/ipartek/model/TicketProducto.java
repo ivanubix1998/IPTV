@@ -12,16 +12,14 @@ import jakarta.persistence.Table;
 @Table(name = "tickets_listaproductos")
 public class TicketProducto {
 
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "cantidad")
 	private int cantidad;
-	
+
 	@ManyToOne
 	private Ticket ticket;
 
@@ -39,8 +37,7 @@ public class TicketProducto {
 
 	@Override
 	public String toString() {
-		return "TicketProducto [id=" + id   + ", producto=" + producto + ", cantidad=" + cantidad
-				+ "]";
+		return "TicketProducto [id=" + id + ", producto=" + producto + ", cantidad=" + cantidad + "]";
 	}
 
 	public int getId() {
@@ -74,9 +71,5 @@ public class TicketProducto {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
-	
-	
-	
-	
+
 }

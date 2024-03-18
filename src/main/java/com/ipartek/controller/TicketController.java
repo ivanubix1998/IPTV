@@ -32,10 +32,9 @@ public class TicketController {
 
 	@Autowired
 	TicketRepository ticketRepo;
-	
+
 	@Autowired
 	TicketService ticketService;
-	
 
 	@RequestMapping("/tickets")
 	public String Tickets(Model model, HttpServletRequest request) {
@@ -48,6 +47,7 @@ public class TicketController {
 
 	}
 
+	/* Debe mostrar todos los productos del ticket */
 	@RequestMapping("/opciones/{id}")
 	public String TicketsPedido(@PathVariable int id, HttpSession session, Model model) {
 
@@ -59,15 +59,14 @@ public class TicketController {
 		return "tickets";
 
 	}
-	
+
 	@RequestMapping("/eliminar/{id}")
 	public String TicketsPedido3(@PathVariable int id, HttpSession session, Model model) {
-		
-	ticketService.eliminarTicket(id);
-	
+
+		ticketService.eliminarTicket(id);
+
 		return "home";
 
 	}
-	
 
 }

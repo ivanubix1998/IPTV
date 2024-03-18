@@ -12,31 +12,29 @@ import com.ipartek.repository.ProductoRepository;
 public class ProductoService {
 
 	@Autowired
-	 private  ProductoRepository productoRepo;
-	
-	
-	public void guardar(Producto  producto) {
+	private ProductoRepository productoRepo;
+
+	public void guardar(Producto producto) {
 		productoRepo.save(producto);
-    }
-	
+	}
+
 	public void eliminar(int id) {
 		productoRepo.deleteById(id);
-    }
-	
+	}
+
 	public Producto buscarProducto(int id) {
-		 Optional<Producto> productoOptional = productoRepo.findById(id);
-	        return productoOptional.orElse(null);
+		Optional<Producto> productoOptional = productoRepo.findById(id);
+		return productoOptional.orElse(null);
 	}
-	
+
 	public void Modificar(Producto producto) {
-		
-		 // Comprobamos si el producto ya existe en la base de datos
-        if (productoRepo.existsById(producto.getId())) {
-           
-        	productoRepo.save(producto);
-        }
 
+		// Comprobamos si el producto ya existe en la base de datos
+		if (productoRepo.existsById(producto.getId())) {
+
+			productoRepo.save(producto);
+		}
 
 	}
-	
+
 }

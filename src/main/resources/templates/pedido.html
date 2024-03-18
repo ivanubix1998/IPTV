@@ -3,10 +3,10 @@
 
 <head>
 	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
-	<script ></script>
+	<script></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <script src="/script/script.js"></script>
+	<script src="/script/script.js"></script>
 
 	<title>Página con Botones</title>
 
@@ -14,34 +14,33 @@
 
 <body>
 
-			<!--CABECERA DE LA PAGINA-->
+	<!--CABECERA DE LA PAGINA-->
 	<header>
-			<div class="divCabecera">					
-   <a class="h1Cabecera" th:href="@{'/..'}">
-        <img  class="flecha" th:src="@{/images/flecha.png}">
-         </a>
-        <h1 class="h1Cabecera">IPTV</h1>
-</div>
-<p style="text-align: center;">Realiza tu pedido y disfruta de la comida</p>
-	</header>	
-	
-	
-				<!--TODOS LOS PRODUCTOS -->
+		<div class="divCabecera">
+			<a class="h1Cabecera" th:href="@{'/..'}">
+				<img class="flecha" th:src="@{/images/flecha.png}">
+			</a>
+			<h1 class="h1Cabecera">IPTV</h1>
+		</div>
+		<p style="text-align: center;">Realiza tu pedido y disfruta de la comida</p>
+	</header>
+
+
+	<!--TODOS LOS PRODUCTOS -->
 
 	<div class="contenedor">
 		<div class="caja1">
 
 
-				<!--Recogemos la lista recibida desde el MainController, la recorremos y la mostramos-->
+			<!--Recogemos la lista recibida desde el MainController, la recorremos y la mostramos-->
 
-				<article th:each="elemento : ${atr_lista_productos}">
-					<a th:href="'/agregarAlTicket/'+${elemento.id}">
-						<img th:src="@{'images/' + ${elemento.foto}}" width="300px" height="300px"
-							style="cursor: pointer;">
-					</a>
-					<p th:text="${elemento.nombre}" style="font-size: 20px; color: #1A759F; font-weight: bold;"></p>
-					<p th:text="${elemento.precio}+ €"></p>
-				</article>
+			<article th:each="elemento : ${atr_lista_productos}">
+				<a th:href="'/agregarAlTicket/'+${elemento.id}">
+					<img th:src="@{'images/' + ${elemento.foto}}" width="300px" height="300px" style="cursor: pointer;">
+				</a>
+				<p th:text="${elemento.nombre}" style="font-size: 20px; color: #1A759F; font-weight: bold;"></p>
+				<p th:text="${elemento.precio}+ €"></p>
+			</article>
 
 
 		</div>
@@ -79,7 +78,8 @@
 				<p>--------------------------------------------------------</p>
 				<p>Precio Total: <span th:text="${preciototal}"></span><span> €</span></p>
 				<p> <a th:href="@{'/cancelar'}" class="generarTicket">Cancelar</a>
-					<a th:href="@{'/aceptar'}" class="generarTicket" id="aceptar" style="visibility: hidden;">Aceptar</a>
+					<a th:href="@{'/aceptar'}" class="generarTicket" id="aceptar"
+						style="visibility: hidden;">Aceptar</a>
 
 				</p>
 
@@ -87,7 +87,7 @@
 		</div>
 	</div>
 
-			<!--PIE DE LA PAGINA-->
+	<!--PIE DE LA PAGINA-->
 
 	<div th:include="Base.html::pie"></div>
 
