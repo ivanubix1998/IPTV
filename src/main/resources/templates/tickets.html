@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	
+	
+						<!--CABECERA DE LA PAGINA-->
+	<header>
+			<div class="divCabecera">					
+   <a class="h1Cabecera" th:href="@{'/..'}">
+        <img  class="flecha" th:src="@{/images/flecha.png}">
+         </a>
+        <h1 class="h1Cabecera">TICKETS</h1>
+</div>
+	</header>
+
+
+						<!-- LISTA DE TODOS LOS TICKETS -->
+
+	<div class="caja4">
+
+   <table th:each="elemento : ${atr_listaProductos}">
+	   
+	      <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Productos</th>
+                <th>Borrar</th>
+        
+                <!-- Agrega más columnas según las propiedades de tu entidad -->
+            </tr>
+            <tr>
+                    <!-- Accede a las propiedades de cada mascota -->
+                    <td th:text="${elemento.id}"></td>
+                    <td th:text="${elemento.fecha}"></td>
+                    <td th:text="${elemento.hora}"></td>
+                    
+				<td><a th:href="'/opciones/'+${elemento.id}">Productos</a></td>
+				<td><a th:href="'/eliminar/'+${elemento.id}">Eliminar</a></td>
+                         </tr>
+                 
+                    <!-- Agrega más celdas según las propiedades de tu entidad -->
+                </table>
+    </div>
+    		<h1 style="text-align: center;">PRODUCTOS DEL TICKET</h1>
+
+	<div class="caja3">
+		 <table th:each="elementos : ${atr_lista_productos_tickets}"> 
+	   
+	      <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Ticket</th>
+        
+                <!-- Agrega más columnas según las propiedades de tu entidad -->
+            </tr>
+         <tr>
+			 
+                    <td th:text="${elementos.id}"></td>
+                    <td th:text="${elementos.producto.nombre}"></td>
+                    <td th:text="${elementos.producto.precio}"></td>
+                    <td th:text="${elementos.cantidad}"></td>
+                    <td th:text="${elementos.ticket.id}"></td>
+		 </tr>
+                    <!-- Accede a las propiedades de cada mascota -->
+                 
+                    
+                       
+                 
+                    <!-- Agrega más celdas según las propiedades de tu entidad -->
+                </table>
+    
+		
+	</div>
+	
+	<!--PIE DE LA PAGINA-->
+
+	<div th:include="Base.html::pie"></div>
+</body>
+</html>
+	

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+	<script ></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <script src="/script/script.js"></script>
+
+	<title>Página con Botones</title>
+
+</head>
+
+<body>
+
+			<!--CABECERA DE LA PAGINA-->
+	<header>
+			<div class="divCabecera">					
+   <a class="h1Cabecera" th:href="@{'/..'}">
+        <img  class="flecha" th:src="@{/images/flecha.png}">
+         </a>
+        <h1 class="h1Cabecera">IPTV</h1>
+</div>
+<p style="text-align: center;">Realiza tu pedido y disfruta de la comida</p>
+	</header>	
+	
+	
+				<!--TODOS LOS PRODUCTOS -->
+
+	<div class="contenedor">
+		<div class="caja1">
+
+
+				<!--Recogemos la lista recibida desde el MainController, la recorremos y la mostramos-->
+
+				<article th:each="elemento : ${atr_lista_productos}">
+					<a th:href="'/agregarAlTicket/'+${elemento.id}">
+						<img th:src="@{'images/' + ${elemento.foto}}" width="300px" height="300px"
+							style="cursor: pointer;">
+					</a>
+					<p th:text="${elemento.nombre}" style="font-size: 20px; color: #1A759F; font-weight: bold;"></p>
+					<p th:text="${elemento.precio}+ €"></p>
+				</article>
+
+
+		</div>
+		<div class="caja2">
+			<div class="ticket">
+				<h1 style="padding-top: 10px; text-align: center;">Ticket</h1>
+				<h2>Bar Manolo Sanchez:</h2>
+
+				<p>
+					<span style="margin-left: 2px;">Fecha: </span><span th:text="${fecha}"></span>
+				</p>
+
+				<p>
+					<span style="margin-left: 2px;">Hora: </span><span th:text="${hora}"></span>
+				</p>
+				<p>--------------------------------------------------------</p>
+
+				<h4>Productos Seleccionados:</h4>
+
+
+				<table class="tablaProductos" id="tablaProductos" border="1">
+					<tr>
+						<td>Producto</td>
+						<td>Precio</td>
+						<td>Cantidad</td>
+					</tr>
+					<tr id="lista" th:each="elemento : ${atr_datos_en_sesion} ">
+						<td th:text="${elemento.key.nombre}"></td>
+						<td th:text="${elemento.key.precio}"></td>
+						<td th:text="${elemento.value}"></td>
+					</tr>
+				</table>
+
+
+				<p>--------------------------------------------------------</p>
+				<p>Precio Total: <span th:text="${preciototal}"></span><span> €</span></p>
+				<p> <a th:href="@{'/cancelar'}" class="generarTicket">Cancelar</a>
+					<a th:href="@{'/aceptar'}" class="generarTicket" id="aceptar" style="visibility: hidden;">Aceptar</a>
+
+				</p>
+
+			</div>
+		</div>
+	</div>
+
+			<!--PIE DE LA PAGINA-->
+
+	<div th:include="Base.html::pie"></div>
+
+</body>
+
+</html>

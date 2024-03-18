@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+
+	<!--CABECERA DE LA PAGINA-->
+	<header>
+		<div class="divCabecera">
+			<a class="h1Cabecera" th:href="@{'/..'}">
+				<img class="flecha" th:src="@{/images/flecha.png}">
+			</a>
+			<h1 class="h1Cabecera">INVENTARIO</h1>
+		</div>
+		<p style="text-align: center;">GESTIONA LOS PRODUCTOS DEL BAR</p>
+	</header>
+
+
+	<!--FORMULARIO PARA INSERTAR PRODUCTO-->
+	<h2>Insertar producto</h2>
+
+	<div class="formulario">
+		<form method="post" action="/insertar" enctype="multipart/form-data">
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" name="nombre" required>
+
+			<label for="foto">Foto:</label>
+			<input type="file" name="file" />
+
+
+			<label for="precio">Precio:</label>
+			<input type="number" id="precio" name="precio" required>
+
+			<label for="iva">IVA:</label>
+			<select id="iva" name="iva" style="width: 70px;height: 40px; text-align: center;">
+				<option value="10">10%</option>
+				<option value="5">5%</option>
+				<option value="21">21%</option>
+				<option value="0">0%</option>
+			</select>
+			<br><br>
+
+			<button class="boton" type="submit">Añadir</button>
+		</form>
+	</div>
+
+	<!-- TABLA CON TODOS LOS PRODUCTOS -->
+	<h2>Tabla de todos los productos</h2>
+	<div class="formulario2">
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nombre</th>
+					<th>Foto</th>
+					<th>Precio</th>
+					<th>IVA</th>
+					<th>UTILIDADES</th>
+					<!-- Agrega más columnas según las propiedades de tu entidad -->
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="elemento : ${atr_listaProductos}">
+					<!-- Accede a las propiedades de cada mascota -->
+					<td th:text="${elemento.id}"></td>
+					<td th:text="${elemento.nombre}"></td>
+					<td th:text="${elemento.foto}"></td>
+					<td>
+						<span th:text="${elemento.precio}"></span><span style="margin-left: 2px;">€</span>
+					</td>
+					<td>
+						<span th:text="${elemento.iva}"></span><span style="margin-left: 2px;">%</span>
+					</td>
+					<td>
+						<a th:href="@{'/borrar?id=' + ${elemento.id}}">Borrar</a>
+						<a th:href="@{'/modificar?id=' + ${elemento.id}}">Modificar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!--PIE DE LA PAGINA-->
+	<div th:include="Base.html::pie"></div>
+
+
+</body>
+
+</html>
